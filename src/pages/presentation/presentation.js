@@ -219,7 +219,7 @@ class PresentationPage extends React.Component {
                             <tr key={student.id}>
                                 <td scope="row">{student.id}</td>
                                 <td className={"nameCell"}>{student.name}</td>
-                                <td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id')}/></td>
+                                <td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
                                 <td><img alt={"Presentation " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>
                                 <td className={"urlCell"}><a href={student.url} target="_blank">{student.url}</a></td>
