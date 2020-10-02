@@ -1,0 +1,14 @@
+.login-page {
+    width: 300px;
+    margin-top: 250px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-page > * {
+    width: inherit;
+    margin-bottom: 15px;
+}

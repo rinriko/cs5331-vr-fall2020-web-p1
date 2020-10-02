@@ -1,0 +1,23 @@
+.block {
+    display: block;
+    white-space: pre-line;
+    margin-left: 10px;
+}
+.inline {
+    /*display: block;*/
+    white-space: pre-line;
+    margin-left: 10px;
+}
+
+
+.h1 {
+    display: inline;
+}
+
+.h4 {
+    display: inline;
+}
+
+.h3 {
+    display: inline;
+}

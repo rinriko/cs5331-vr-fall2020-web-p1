@@ -1,0 +1,15 @@
+.header {
+    text-align: center;
+    color: #343434;
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.field {
+    padding: 20px;
+}
+
+.table{
+    margin-left:auto;
+    margin-right:auto;
+}
