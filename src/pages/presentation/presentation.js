@@ -33,7 +33,7 @@ class PresentationPage extends React.Component {
     }
 
 
-    presentLength = 360;
+    presentLength = 200;
 
     criteria = [
         {
