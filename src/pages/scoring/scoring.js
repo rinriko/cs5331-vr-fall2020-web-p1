@@ -21,7 +21,7 @@ class ScoringPage extends React.Component {
     criteria = [
         {
             name: 'criteria_1',
-            title: '1. How do you rate the applicability of this technology on the scale from 1 (not applicable) to 10 (applicable to many applications)?',
+            title: '1. How do you rate the effort of this work?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
@@ -35,7 +35,7 @@ class ScoringPage extends React.Component {
         },
         {
             name: 'criteria_3',
-            title: '3. How do you rate the usefulness of this presentation on the scale from 1 (useless) to 10 (very useful)?',
+            title: '3. How do you rate the creativity of the work?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
