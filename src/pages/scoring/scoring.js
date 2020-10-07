@@ -99,7 +99,7 @@ class ScoringPage extends React.Component {
             <div className={"container"}>
                 <div className={"row"}>
                     <h3>{"Current presentation: #" + this.state.presenting_student.id}</h3>
-                    <div style={"position: absolute; right: 0"}>
+                    <div style={{"position": 'absolute', "right": 0}}>
                         {(this.state.timeleft > 2)?
                             <div>
                                 <h4 className={"h4"}>{"Time left: "}</h4>
