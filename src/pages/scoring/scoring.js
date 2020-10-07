@@ -112,7 +112,7 @@ class ScoringPage extends React.Component {
                                 </div> }
                         </div>
                     </div>
-                    <div className={"row aspect-video"}>
+                    <div className="row aspect-video">
                         <Iframe
                             width={'1280'}
                             height={'720'}
