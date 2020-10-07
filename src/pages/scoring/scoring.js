@@ -112,10 +112,10 @@ class ScoringPage extends React.Component {
                                 </div> }
                         </div>
                     </div>
-                    <div className={"row"} style={{height: 'calc(100vh - 150px)'}}>
+                    <div className={"row"}>
                         <Iframe
-                            width={'100%'}
-                            height={'100%'}
+                            width={'1280'}
+                            height={'720'}
                             url={this.state.presenting_student.url}
                         />
                         {/*<h3 className={"inline"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
