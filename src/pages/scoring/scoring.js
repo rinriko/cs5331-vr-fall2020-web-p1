@@ -112,7 +112,7 @@ class ScoringPage extends React.Component {
                                 </div> }
                         </div>
                     </div>
-                    <div className={"row"} style={{height: 'calc(100vh - 200px)'}}>
+                    <div className={"row"} style={{height: 'calc(100vh - 150px)'}}>
                         <Iframe
                             width={'100%'}
                             height={'100%'}
