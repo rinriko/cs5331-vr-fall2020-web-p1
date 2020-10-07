@@ -96,15 +96,13 @@ class PresentationPage extends React.Component {
 
         if (score) {
             const keys = Object.keys(score).filter(d => d.indexOf("criteria") >= 0);
-
             let data = keys.map((d,i) => {
                 return {
-                    y: i,
+                    y: this.criteria[i].title,
                     x: score[d]
                 }
-            })
+            }).reverse();
 
-            // console.log(data);
             await this.setState({data, submissionCount, comments});
         } else {
             this.setState({
@@ -290,13 +288,14 @@ class PresentationPage extends React.Component {
                                                 <XYPlot   margin={{left: 105}}
                                                           height={150} width={250}
                                                           xDomain={[0, 10]}
+                                                          yType="ordinal"
                                                 >
                                                     <HorizontalGridLines style={{stroke: '#8ab1b4'}}/>
                                                     <VerticalGridLines style={{stroke: '#8ab1b4'}}/>
                                                     <XAxis/>
 
                                                     <YAxis tickSize={20} left={20}
-                                                           tickFormat={v => this.criteria[v].title} tickTotal={5}
+
                                                            style={{
                                                                // line: {stroke: '#ADDDE1'},
                                                                // ticks: {stroke: '#ADDDE1'},
