@@ -97,7 +97,7 @@ class ScoringPage extends React.Component {
     render() {
         const content = (this.state.presenting_student && this.state.presenting_student.id) ?
             <div className={"container"}>
-                <div className={"row"}>
+                <div className={"row"} style={{"position": 'relative'}}>
                     <h3>{"Current presentation: #" + this.state.presenting_student.id}</h3>
                     <div style={{"position": 'absolute', "right": 0}}>
                         {(this.state.timeleft > 2)?
