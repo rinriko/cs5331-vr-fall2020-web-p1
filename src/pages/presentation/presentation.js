@@ -285,7 +285,7 @@ class PresentationPage extends React.Component {
                                         {
                                             this.state.student && this.state.student.score ?
                                                 <div>
-                                                <XYPlot   margin={{left: 105}}
+                                                <XYPlot   margin={{left: 115,top: 10}}
                                                           height={150} width={250}
                                                           xDomain={[0, 10]}
                                                           yType="ordinal"
@@ -304,10 +304,10 @@ class PresentationPage extends React.Component {
                                                     <HorizontalBarSeries
                                                         data={this.state.data} />
                                                 </XYPlot>
-                                                    <div style={{"border-top":"1px solid #c2c2c2"}}>
+                                                    <div>
                                                         <div style={{display: "inline"}}>{this.state.submissionCount}</div>
                                                         <div style={{display: "inline"}}>{" evaluations"}</div>
-                                                        <div>
+                                                        <div style={{"border-top":"1px solid #c2c2c2"}}>
                                                             {!this.state.comments && <div>Loading...</div>}
                                                             {this.state.comments && this.state.comments.length > 0 ?
                                                             <div className={"scroll"}>
