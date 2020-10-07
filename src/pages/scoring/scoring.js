@@ -21,28 +21,28 @@ class ScoringPage extends React.Component {
     criteria = [
         {
             name: 'criteria_1',
-            title: '1. How do you rate the <b>effort</b> of this work?',
+            title: '1. How do you rate the effort of this work?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
         },
         {
             name: 'criteria_2',
-            title: '2. How do you rate the <b>creativity</b> of the work?',
+            title: '2. How do you rate the creativity of the work?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
         },
         {
             name: 'criteria_3',
-            title: '3. How do you rate the <b>clarity</b> of this presentation on the scale from 1 (not clear at all) to 10 (the presentation is clear)?',
+            title: '3. How do you rate the clarity of this presentation on the scale from 1 (not clear at all) to 10 (the presentation is clear)?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
         },
         {
             name: 'criteria_4',
-            title: '4. How do you rate the <b>overall quality</b> of this presentation on the scale from 1 (low) to 10 (excellent)?',
+            title: '4. How do you rate the overall quality of this presentation on the scale from 1 (low) to 10 (excellent)?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
@@ -113,7 +113,7 @@ class ScoringPage extends React.Component {
                 </div>
                 <div className={"row"}>
                     <Iframe
-                        width={'80%'}
+                        width={'100%'}
                         height={'500px'}
                         url={this.state.presenting_student.url}
                     />
@@ -125,8 +125,8 @@ class ScoringPage extends React.Component {
                         <div className="form-group row">
                             {/*<h3 className={"block"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
                             <div className={"block"}>{"\n"}</div>
-                            <label htmlFor="colFormLabel" className="col-sm-10 col-form-label">Your class ID</label>
-                            <div className="col-sm-10">
+                            <label htmlFor="colFormLabel" className="col-form-label">Your class ID</label>
+                            <div className="col-sm-8">
                                 <input type="number" className="form-control"
                                        value={this.state.id}
                                        id="colFormLabel"
