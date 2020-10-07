@@ -99,7 +99,7 @@ class PresentationPage extends React.Component {
 
             let data = keys.map((d,i) => {
                 return {
-                    y: keys.length-i-1,
+                    y: i,
                     x: score[d]
                 }
             })
