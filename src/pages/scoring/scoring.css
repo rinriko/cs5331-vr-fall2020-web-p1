@@ -21,3 +21,18 @@
 .h3 {
     display: inline;
 }
+
+.aspect-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 51%;
+}
+
+.aspect-video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
