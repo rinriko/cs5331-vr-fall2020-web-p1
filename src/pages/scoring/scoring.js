@@ -96,81 +96,83 @@ class ScoringPage extends React.Component {
 
     render() {
         const content = (this.state.presenting_student && this.state.presenting_student.id) ?
-            <div className={"container"}>
-                <div className={"row"} style={{"position": 'relative'}}>
-                    <h3>{"Current presentation: #" + this.state.presenting_student.id}</h3>
-                    <div style={{"position": 'absolute', "right": 0}}>
-                        {(this.state.timeleft > 2)?
-                            <div>
-                                <h4 className={"h4"}>{"Time left: "}</h4>
-                                <h3 className={"h1"}>{this.state.timeleft - 2}</h3>
-                                <h4 className={"h4"}>{"s"}</h4>
-                            </div> : <div>
-                                <h4 className={"h4"}>{"Time left: "}</h4>
-                                <h3 className={"h1"}>{"--"}</h3>
-                            </div> }
-                    </div>
-                </div>
-                <div className={"row"}>
-                    <Iframe
-                        width={'100%'}
-                        height={'500px'}
-                        url={this.state.presenting_student.url}
-                    />
-                    {/*<h3 className={"inline"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
-                    {/*<div className={"block"}>{"\n"}</div>*/}
-                </div>
-                <div className={"row mt-2"}>
-                    <div>
-                        <div className="form-group row">
-                            {/*<h3 className={"block"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
-                            <div className={"block"}>{"\n"}</div>
-                            <label htmlFor="colFormLabel" className="col-form-label">Your class ID</label>
-                            <div className="col-sm-8">
-                                <input type="number" className="form-control"
-                                       value={this.state.id}
-                                       id="colFormLabel"
-                                       placeholder="ID"
-                                       onChange={e => this.setState({id: e.target.value})}
-                                       required/>
-                            </div>
+            <div style={{"background-color": "#bbb"}}>
+                <div className={"container"}>
+                    <div className={"row"} style={{"position": 'relative'}}>
+                        <h3>{"Current presentation: #" + this.state.presenting_student.id}</h3>
+                        <div style={{"position": 'absolute', "right": 0}}>
+                            {(this.state.timeleft > 2)?
+                                <div>
+                                    <h4 className={"h4"}>{"Time left: "}</h4>
+                                    <h3 className={"h1"}>{this.state.timeleft - 2}</h3>
+                                    <h4 className={"h4"}>{"s"}</h4>
+                                </div> : <div>
+                                    <h4 className={"h4"}>{"Time left: "}</h4>
+                                    <h3 className={"h1"}>{"--"}</h3>
+                                </div> }
                         </div>
-                        {/*checkboxes*/}
-                        <fieldset className="form-group">
-                            {this.criteria.map(c => <div key={c.name} className="row mt-4">
-                                <legend className="col-form-label col-lg-10 pt-0">{c.title}</legend>
-                                <div className="col-sm-12">
-                                    {c.values.map(v => <div key={v} className="form-check form-check-inline mr-4">
-                                        <input className="form-check-input"
-                                               type="radio" name={c.name}
-                                               id={c.name+v} value={v}
-                                               style={{padding: '1rem'}}
-                                               onChange={() => {
-                                                   this.setState({score: {...this.state.score, [c.name]: v}})
-                                        }}/>
-                                        <label className="form-check-label" htmlFor={c.name+v}>{v}</label>
-                                    </div>)}
+                    </div>
+                    <div className={"row"} style={{height: 'calc(100vh - 200px)'}}>
+                        <Iframe
+                            width={'100%'}
+                            height={'100%'}
+                            url={this.state.presenting_student.url}
+                        />
+                        {/*<h3 className={"inline"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
+                        {/*<div className={"block"}>{"\n"}</div>*/}
+                    </div>
+                    <div className={"row mt-2"}>
+                        <div>
+                            <div className="form-group row">
+                                {/*<h3 className={"block"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
+                                <div className={"block"}>{"\n"}</div>
+                                <label htmlFor="colFormLabel" className="col-form-label">Your class ID</label>
+                                <div className="col-sm-8">
+                                    <input type="number" className="form-control"
+                                           value={this.state.id}
+                                           id="colFormLabel"
+                                           placeholder="ID"
+                                           onChange={e => this.setState({id: e.target.value})}
+                                           required/>
                                 </div>
-                            </div>)}
-                        </fieldset>
-                        <div className="form-group row mt-2">
-                            <label htmlFor="colFormLabel" className="col-sm-10 col-form-label">Any comment/question</label>
-                            <div className="col-sm-10">
-                                <textarea
-                                    className="form-control"
-                                    value={this.state.comment}
-                                    id="formControlTextarea"
-                                    rows="3"
-                                    onChange={e => this.setState({comment: e.target.value})}
-                                />
                             </div>
+                            {/*checkboxes*/}
+                            <fieldset className="form-group">
+                                {this.criteria.map(c => <div key={c.name} className="row mt-4">
+                                    <legend className="col-form-label col-lg-10 pt-0">{c.title}</legend>
+                                    <div className="col-sm-12">
+                                        {c.values.map(v => <div key={v} className="form-check form-check-inline mr-4">
+                                            <input className="form-check-input"
+                                                   type="radio" name={c.name}
+                                                   id={c.name+v} value={v}
+                                                   style={{padding: '1rem'}}
+                                                   onChange={() => {
+                                                       this.setState({score: {...this.state.score, [c.name]: v}})
+                                            }}/>
+                                            <label className="form-check-label" htmlFor={c.name+v}>{v}</label>
+                                        </div>)}
+                                    </div>
+                                </div>)}
+                            </fieldset>
+                            <div className="form-group row mt-2">
+                                <label htmlFor="colFormLabel" className="col-sm-10 col-form-label">Any comment/question</label>
+                                <div className="col-sm-10">
+                                    <textarea
+                                        className="form-control"
+                                        value={this.state.comment}
+                                        id="formControlTextarea"
+                                        rows="3"
+                                        onChange={e => this.setState({comment: e.target.value})}
+                                    />
+                                </div>
+                            </div>
+                            <button className="btn btn-success" style={{marginBottom: "50px"}}
+                                    onClick={this.setUser}>Submit
+                            </button>
                         </div>
-                        <button className="btn btn-success" style={{marginBottom: "50px"}}
-                                onClick={this.setUser}>Submit
-                        </button>
                     </div>
                 </div>
-            </div> :
+            </div>:
             <div>
                 <p>No presentation.</p>
             </div>
