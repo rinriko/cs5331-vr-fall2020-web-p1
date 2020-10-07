@@ -97,24 +97,26 @@ class ScoringPage extends React.Component {
     render() {
         const content = (this.state.presenting_student && this.state.presenting_student.id) ?
             <div className={"container"}>
-                <h3 className={"row"}>{"Current group: #" + this.state.presenting_student.id}</h3>
+                <div className={"row"}>
+                    <h3>{"Current presentation: #" + this.state.presenting_student.id}</h3>
+                    <div style={"position: absolute; right: 0"}>
+                        {(this.state.timeleft > 2)?
+                            <div>
+                                <h4 className={"h4"}>{"Time left: "}</h4>
+                                <h3 className={"h1"}>{this.state.timeleft - 2}</h3>
+                                <h4 className={"h4"}>{"s"}</h4>
+                            </div> : <div>
+                                <h4 className={"h4"}>{"Time left: "}</h4>
+                                <h3 className={"h1"}>{"--"}</h3>
+                            </div> }
+                    </div>
+                </div>
                 <div className={"row"}>
                     <Iframe
                         width={'80%'}
                         height={'500px'}
                         url={this.state.presenting_student.url}
                     />
-                    <div className={"inline"}>
-                        {(this.state.timeleft > 2)?
-                    <div>
-                        <h4 className={"h4"}>{"Time left: "}</h4>
-                        <h1 className={"h1"}>{this.state.timeleft - 2}</h1>
-                        <h4 className={"h4"}>{"s"}</h4>
-                    </div> : <div>
-                                <h4 className={"h4"}>{"Time left: "}</h4>
-                            <h1 className={"h1"}>{"--"}</h1>
-                        </div> }
-                    </div>
                     {/*<h3 className={"inline"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
                     {/*<div className={"block"}>{"\n"}</div>*/}
                 </div>
@@ -152,7 +154,7 @@ class ScoringPage extends React.Component {
                             </div>)}
                         </fieldset>
                         <div className="form-group row mt-2">
-                            <label htmlFor="colFormLabel" className="col-sm-10 col-form-label">Comment (optional)</label>
+                            <label htmlFor="colFormLabel" className="col-sm-10 col-form-label">Any comment/question</label>
                             <div className="col-sm-10">
                                 <textarea
                                     className="form-control"
