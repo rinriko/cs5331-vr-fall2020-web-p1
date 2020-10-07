@@ -96,7 +96,7 @@ class ScoringPage extends React.Component {
 
     render() {
         const content = (this.state.presenting_student && this.state.presenting_student.id) ?
-            <div style={{"background-color": "#ddd"}}>
+            <div style={{"backgroundColor": "#ddd"}}>
                 <div className={"container"}>
                     <div className={"row"} style={{"position": 'relative'}}>
                         <h3>{"Current presentation: #" + this.state.presenting_student.id}</h3>
