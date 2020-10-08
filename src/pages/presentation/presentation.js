@@ -173,17 +173,17 @@ class PresentationPage extends React.Component {
         axisy.selectAll('text').attr('x',0);
         let node=g.selectAll('circle').data(data,d=>d.key+d.id)
             .join("circle")
-            .attr("cx", d => d.x===undefined?height:d.x)
+            .attr("cx", d => d.x===undefined?0:d.x)
             .attr("cy", d => d.y==undefined? y(d.key):d.y)
             .attr('fill',d=>color(getCategoty(d.level)))
             .attr('opacity',0.9)
             .attr("r", radius);
         if (reheat){
             let simulation = this.state.simulation
-                .force("x", d3.forceX().strength(0.5).x( function(d){ return x(d.value) } ))
-                .force("y", d3.forceY().strength(0.8).y( function(d){ return y(d.key) } ))
-                .force("charge", d3.forceManyBody().strength(1)) // Nodes are attracted one each other of value is > 0
-                .force("collide", d3.forceCollide().strength(.1).radius(radius).iterations(1)) // Force that avoids circle overlapping
+                .force("x", d3.forceX().strength(0.3).x( function(d){ return x(d.value) } ))
+                .force("y", d3.forceY().strength(0.3).y( function(d){ return y(d.key) } ))
+                .force("charge", d3.forceManyBody().strength(-0.1)) // Nodes are attracted one each other of value is > 0
+                .force("collide", d3.forceCollide().radius(radius)) // Force that avoids circle overlapping
 
             simulation
                 .nodes(data)
@@ -191,7 +191,7 @@ class PresentationPage extends React.Component {
                     node
                         .attr("cx", function(d){ return d.x; })
                         .attr("cy", function(d){ return d.y; })
-                }).alpha(0.3).restart();
+                }).restart().alpha(0.25);
             this.setState(simulation)
         }
         function getCategoty(str){
