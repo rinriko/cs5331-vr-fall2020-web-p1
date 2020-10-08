@@ -1,16 +1,9 @@
 import React, {Fragment} from 'react'
 import Modal from 'react-modal'
 import Iframe from "react-iframe";
+import * as d3 from 'd3';
 
 
-import {XYPlot,
-    LineSeries,
-    XAxis, YAxis,
-    HorizontalGridLines,
-    VerticalGridLines,
-    MarkSeries,
-    VerticalBarSeries,
-    HorizontalBarSeries} from 'react-vis'
 import {getStudents, postPresentingStudent, postPresentingTime} from "../../services/students";
 import './presentation.css';
 import LoginPage from "../signin/signin";
@@ -28,7 +21,8 @@ class PresentationPage extends React.Component {
             countdown: 0,
             data: null,
             submissionCount: null,
-            comments: null
+            comments: null,
+            simulation:d3.forceSimulation(),
         }
     }
 
@@ -59,7 +53,7 @@ class PresentationPage extends React.Component {
         },
         {
             name: 'criteria_4',
-            title: 'Overall quality',
+            title: 'Overall',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
@@ -96,12 +90,41 @@ class PresentationPage extends React.Component {
 
         if (score) {
             const keys = Object.keys(score).filter(d => d.indexOf("criteria") >= 0);
-            let data = keys.map((d,i) => {
-                return {
-                    y: this.criteria[i].title,
-                    x: score[d]
-                }
-            }).reverse();
+            // let data = keys.map((d,i) => {
+            //     return {
+            //         y: this.criteria[i].title,
+            //         x: score[d]
+            //     }
+            // }).reverse();
+            let data = this.state.data;
+            if (data ===null)
+                data = [];
+            let newData = [];
+            keys.forEach((d,i) => {
+                scoreRaw.data[d].forEach((e,ei)=>{
+                    newData.push({
+                        id:ei,
+                        value:e,
+                        key:this.criteria[i].title
+                    })
+                });
+            });
+            let reheat= false;
+            data.forEach(d=>d.enable=false);
+            newData.forEach(d=>{
+                const oldel = data.find(e=>(e.key+e.id)===(d.key+d.id));
+                if (!oldel){
+                    reheat = true;
+                    d.enable = true;
+                    data.push(d);
+                }else
+                    oldel.enable = true;
+            });
+            let oldlength = data.length;
+            data= data.filter(d=>d.enable);
+            if (oldlength!==data.length)
+                reheat = true;
+            this.creatScoreChart(data,reheat);
 
             await this.setState({data, submissionCount, comments});
         } else {
@@ -113,7 +136,60 @@ class PresentationPage extends React.Component {
         }
     }
 
+    creatScoreChart(data,reheat) {
+        let width = 250;
+        let height = 150;
+        let margin = {top:10,left:100,right:10,bottom:20};
+        let h = height-margin.top-margin.bottom;
+        let w = width-margin.left-margin.right;
+        let radius = 2;
+        let padding = 0.5;
+        let y = d3.scalePoint().domain(data.map(d=>d.key))
+            .range([0,h]).padding(0.5);
+        let x = d3.scaleLinear().domain([0,10]).range([0,w]);
+        let svg = d3.select(this.refs.scorePlot).select('svg')
+            .style('overflow','visible')
+            .attr('width',width)
+            .attr('height',height);
+        let g = svg.select('g.content').attr('transform',`translate(${margin.left},${margin.top})`);
+        let axisx = g.select('g.axisx');
+        if(axisx.empty()){
+            axisx = g.append('g').attr('class','axisx');
+        }
+        axisx.attr('transform',`translate(0,${h})`).call(d3.axisBottom(x).ticks(5));
+        axisx.select('.domain').remove();
+        axisx.selectAll('line').attr('y2',-h)
+        let axisy = g.select('g.axisy');
+        if(axisy.empty()){
+            axisy = g.append('g').attr('class','axisy');
+        }
+        axisy.call(d3.axisLeft(y));
+        axisy.select('.domain').remove();
+        axisy.selectAll('line').attr('x2',w);
+        let node=g.selectAll('circle').data(data,d=>d.key+d.id)
+            .join("circle")
+            .attr("cx", d => d.x===undefined?height:d.x)
+            .attr("cy", d => d.y==undefined? y(d.key):d.y)
+            .attr('fill','darkcyan')
+            .attr('opacity',0.9)
+            .attr("r", radius);
+        if (reheat){
+            let simulation = this.state.simulation
+                .force("x", d3.forceX().strength(0.5).x( function(d){ return x(d.value) } ))
+                .force("y", d3.forceY().strength(0.8).y( function(d){ return y(d.key) } ))
+                .force("charge", d3.forceManyBody().strength(1)) // Nodes are attracted one each other of value is > 0
+                .force("collide", d3.forceCollide().strength(.1).radius(radius).iterations(1)) // Force that avoids circle overlapping
 
+            simulation
+                .nodes(data)
+                .on("tick", function(d){
+                    node
+                        .attr("cx", function(d){ return d.x; })
+                        .attr("cy", function(d){ return d.y; })
+                }).alpha(0.3).restart();
+            this.setState(simulation)
+        }
+    }
     async startHere(index) {
         let idx = index - 1;
 
@@ -285,25 +361,9 @@ class PresentationPage extends React.Component {
                                         {
                                             this.state.student && this.state.student.score ?
                                                 <div>
-                                                <XYPlot   margin={{left: 115,top: 10}}
-                                                          height={150} width={250}
-                                                          xDomain={[0, 10]}
-                                                          yType="ordinal"
-                                                >
-                                                    <HorizontalGridLines style={{stroke: '#8ab1b4'}}/>
-                                                    <VerticalGridLines style={{stroke: '#8ab1b4'}}/>
-                                                    <XAxis/>
-
-                                                    <YAxis tickSize={20} left={20}
-
-                                                           style={{
-                                                               // line: {stroke: '#ADDDE1'},
-                                                               // ticks: {stroke: '#ADDDE1'},
-                                                               text: {stroke: 'none', fill: '#000000', fontSize: '1rem'}}}
-                                                        />
-                                                    <HorizontalBarSeries
-                                                        data={this.state.data} />
-                                                </XYPlot>
+                                                    <div ref="scorePlot">
+                                                        <svg><g className={'content'}></g></svg>
+                                                    </div>
                                                     <div>
                                                         <div style={{display: "inline"}}>{this.state.submissionCount}</div>
                                                         <div style={{display: "inline"}}>{" evaluations"}</div>

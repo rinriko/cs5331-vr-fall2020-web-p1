@@ -83,3 +83,13 @@
 .commentLine {
     margin-bottom: 15px;
 }
+
+.axisx .tick line{
+    stroke-width: 0.2px;
+    stroke-dasharray: 4 2;
+}
+
+.tick text{
+    font-size: 0.8rem;
+    font-weight: bold;
+}
