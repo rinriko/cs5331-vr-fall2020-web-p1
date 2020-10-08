@@ -139,7 +139,7 @@ class PresentationPage extends React.Component {
     creatScoreChart(data,reheat) {
         let width = 250;
         let height = 150;
-        let margin = {top:10,left:100,right:10,bottom:20};
+        let margin = {top:10,left:0,right:10,bottom:20};
         let h = height-margin.top-margin.bottom;
         let w = width-margin.left-margin.right;
         let radius = 2;
@@ -158,14 +158,17 @@ class PresentationPage extends React.Component {
         }
         axisx.attr('transform',`translate(0,${h})`).call(d3.axisBottom(x).ticks(5));
         axisx.select('.domain').remove();
-        axisx.selectAll('line').attr('y2',-h)
+        axisx.selectAll('line').attr('y2',-h);
+        axisx.selectAll('text').attr('dy','0.5em');
         let axisy = g.select('g.axisy');
         if(axisy.empty()){
             axisy = g.append('g').attr('class','axisy');
         }
-        axisy.call(d3.axisLeft(y));
+        axisy.call(d3.axisRight(y));
         axisy.select('.domain').remove();
         axisy.selectAll('line').attr('x2',w);
+        axisy.selectAll('text').attr('dy',-2);
+        axisy.selectAll('text').attr('x',0);
         let node=g.selectAll('circle').data(data,d=>d.key+d.id)
             .join("circle")
             .attr("cx", d => d.x===undefined?height:d.x)

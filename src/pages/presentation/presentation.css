@@ -91,5 +91,8 @@
 
 .tick text{
     font-size: 0.8rem;
+}
+
+.axisy text{
     font-weight: bold;
 }
