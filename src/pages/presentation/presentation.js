@@ -139,7 +139,7 @@ class PresentationPage extends React.Component {
 
     creatScoreChart(data,reheat) {
         let width = 250;
-        let height = 150;
+        let height = 200;
         let margin = {top:10,left:0,right:10,bottom:20};
         let h = height-margin.top-margin.bottom;
         let w = width-margin.left-margin.right;
