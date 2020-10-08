@@ -104,7 +104,8 @@ class PresentationPage extends React.Component {
                 scoreRaw.data[d].forEach((e,ei)=>{
                     newData.push({
                         id:ei,
-                        value:e,
+                        level:e.level,
+                        value:e.value,
                         key:this.criteria[i].title
                     })
                 });
@@ -147,6 +148,7 @@ class PresentationPage extends React.Component {
         let y = d3.scalePoint().domain(data.map(d=>d.key))
             .range([0,h]).padding(0.5);
         let x = d3.scaleLinear().domain([0,10]).range([0,w]);
+        var color = d3.scaleOrdinal(d3.schemeCategory10).domain([0,1,3]);
         let svg = d3.select(this.refs.scorePlot).select('svg')
             .style('overflow','visible')
             .attr('width',width)
@@ -173,7 +175,7 @@ class PresentationPage extends React.Component {
             .join("circle")
             .attr("cx", d => d.x===undefined?height:d.x)
             .attr("cy", d => d.y==undefined? y(d.key):d.y)
-            .attr('fill','darkcyan')
+            .attr('fill',d=>color(getCategoty(d.level)))
             .attr('opacity',0.9)
             .attr("r", radius);
         if (reheat){
@@ -191,6 +193,16 @@ class PresentationPage extends React.Component {
                         .attr("cy", function(d){ return d.y; })
                 }).alpha(0.3).restart();
             this.setState(simulation)
+        }
+        function getCategoty(str){
+            if (str==="PhD")
+                return 3;
+            else if (new RegExp(/MSSE/g).test(str))
+                return 2;
+            else if (new RegExp(/MSCS/g).test(str))
+                return 1;
+            else
+                return 0;
         }
     }
     async startHere(index) {
