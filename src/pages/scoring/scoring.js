@@ -18,6 +18,8 @@ class ScoringPage extends React.Component {
         }
     }
 
+    submitLimit = 100;
+
     criteria = [
         {
             name: 'criteria_1',
@@ -80,6 +82,11 @@ class ScoringPage extends React.Component {
             // should be 82
             alert('Wrong ID')
         } else {
+            if (this.state.timeleft <= this.submitLimit)
+            {
+                alert('Only allow submission after 100sec!')
+                return
+            }
             for (let c of this.criteria) {
                 if (!this.state.score[c.name]) {
                     alert(c.name + ' missing')
