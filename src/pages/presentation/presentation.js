@@ -143,7 +143,7 @@ class PresentationPage extends React.Component {
         let margin = {top:10,left:0,right:10,bottom:20};
         let h = height-margin.top-margin.bottom;
         let w = width-margin.left-margin.right;
-        let radius = 2;
+        let radius = 3;
         let padding = 0.5;
         let y = d3.scalePoint().domain(data.map(d=>d.key))
             .range([0,h]).padding(0.5);
@@ -176,6 +176,8 @@ class PresentationPage extends React.Component {
             .attr("cx", d => d.x===undefined?0:d.x)
             .attr("cy", d => d.y==undefined? y(d.key):d.y)
             .attr('fill',d=>color(getCategoty(d.level)))
+            .attr('stroke','#fff')
+            .attr('stroke-opacity',0.5)
             .attr('opacity',0.9)
             .attr("r", radius);
         if (reheat){
