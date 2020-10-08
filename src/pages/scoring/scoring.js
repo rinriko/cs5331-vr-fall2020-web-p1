@@ -63,9 +63,14 @@ class ScoringPage extends React.Component {
     getPresentingStudent = async () => {
         const presenting_student = await getPresentingStudent();
         const startTime = await getPresentingTime();
+        let score = this.state.score;
+        for (let c of this.criteria) {
+            score[c.name] = null;
+        }
         await this.setState({
             presenting_student: presenting_student,
             timeleft: startTime.startTime,
+            score
         })
         // console.log(this.state.timeleft);
     }
