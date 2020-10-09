@@ -88,7 +88,7 @@ class ScoringPage extends React.Component {
             // should be 82
             alert('Wrong ID')
         } else {
-            if (this.state.timeleft <= this.submitLimit)
+            if (this.state.timeleft >= this.submitLimit)
             {
                 alert('Only allow submission after 100sec!')
                 return
