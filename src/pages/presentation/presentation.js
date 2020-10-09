@@ -410,7 +410,7 @@ class PresentationPage extends React.Component {
                                         <div>{this.state.nextStudent ?
                                             <div>
                                                 <div className={"mb-1"} style={{height: "40px"}}>
-                                                    <div style={{float: "left"}}>{" Presentation #" + this.state.nextStudent.id + "  "}</div>
+                                                    <h4 style={{float: "left"}}>{" Presentation #" + this.state.nextStudent.id + "  "}</h4>
                                                     <button
                                                     type="button"
                                                     className="btn btn-primary"
@@ -425,7 +425,7 @@ class PresentationPage extends React.Component {
                                                 >
                                                     Next
                                                 </button></div>
-                                                <div><h5>{this.state.nextStudent.name}</h5>
+                                                <div><h6>{this.state.nextStudent.name}</h6>
                                                     <img alt={this.state.nextStudent.name} style={{height: 140}} src={this.state.nextStudent.image}/></div>
                                                 <div className={"pt-2"}>{"\n\n"}</div>
 
