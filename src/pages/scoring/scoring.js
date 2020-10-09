@@ -65,15 +65,21 @@ class ScoringPage extends React.Component {
     getPresentingStudent = async () => {
         const presenting_student = await getPresentingStudent();
         const startTime = await getPresentingTime();
-        let score = this.state.score;
-        for (let c of this.criteria) {
-            score[c.name] = null;
-        }
-        await this.setState({
+        let updatevalue = {
             presenting_student: presenting_student,
             timeleft: startTime.startTime,
-            score
-        })
+        }
+        if (this.state.presenting_student&&(this.state.presenting_student._id!==presenting_student._id)){
+            let score = this.state.score;
+            for (let c of this.criteria) {
+                score[c.name] = null;
+            }
+            document.querySelectorAll('.form-check-input').forEach(el=>{
+                el.checked = false;
+            })
+            updatevalue.score = score;
+        }
+        await this.setState(updatevalue)
         // console.log(this.state.timeleft);
     }
 
@@ -158,8 +164,8 @@ class ScoringPage extends React.Component {
                                                    type="radio" name={c.name}
                                                    id={c.name+v} value={v}
                                                    style={{padding: '1rem'}}
-                                                   onChange={() => {
-                                                       this.setState({score: {...this.state.score, [c.name]: v}})
+                                                   onChange={async () => {
+                                                       await this.setState({score: {...this.state.score, [c.name]: v}})
                                             }}/>
                                             <label className="form-check-label" htmlFor={c.name+v}>{v}</label>
                                         </div>)}
