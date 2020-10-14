@@ -283,7 +283,7 @@ class PresentationPage extends React.Component {
             success={async (user) => {
                 this.setState({user})
                 const students = await getStudents(); // get from back end
-                students.forEach(function(s){s.id = s.id||s.orderid})
+                // students.forEach(function(s){s.id = s.id||s.orderid})
                 await this.setState({students});
             }}
         /> :
