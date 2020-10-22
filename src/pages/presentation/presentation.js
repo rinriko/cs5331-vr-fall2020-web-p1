@@ -284,6 +284,8 @@ class PresentationPage extends React.Component {
                 this.setState({user})
                 const students = await getStudents(); // get from back end
                 // students.forEach(function(s){s.id = s.id||s.orderid})
+                students.sort((a,b)=>a.orderid-b.orderid);
+                console.log(students)
                 await this.setState({students});
             }}
         /> :
