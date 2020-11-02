@@ -15,6 +15,7 @@ class PresentationPage extends React.Component {
         this.state = {
             currentUrl: 'www.google.com',
             students: [],
+            studentList: {},
             student: null,
             nextStudent: null,
             modalOpen: false,
@@ -283,9 +284,14 @@ class PresentationPage extends React.Component {
             success={async (user) => {
                 this.setState({user})
                 const students = await getStudents(); // get from back end
-                // students.forEach(function(s){s.id = s.id||s.orderid})
+                students.forEach(function(s){s.members = s.members.split(',')})
                 students.sort((a,b)=>a.orderid-b.orderid);
-                console.log(students)
+                const studentList_arr = await d3.json("https://cs5331-vr-fall202.herokuapp.com/students");
+                const studentList = {};
+                studentList_arr.forEach(d=>{
+                    studentList[d.id] = d;
+                })
+                await this.setState({studentList});
                 await this.setState({students});
             }}
         /> :
@@ -298,11 +304,12 @@ class PresentationPage extends React.Component {
                         <tr>
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Image</th>
+                            {/*<th scope="col">Image</th>*/}
+                            <th scope="col">Abstract</th>
                             {/*<th scope="col">Sketch</th>*/}
-                            <th scope="col">Screenshot</th>
+                            {/*<th scope="col">Screenshot</th>*/}
                             <th scope="col">Presentation</th>
-                            <th scope="col">GitHub</th>
+                            {/*<th scope="col">GitHub</th>*/}
                             {/*<th scope="col">Score</th>*/}
                             <th scope="col"></th>
                         </tr>
@@ -311,12 +318,13 @@ class PresentationPage extends React.Component {
                         {this.state.students.map(student => (
                             <tr key={student.id}>
                                 <td scope="row">{student.orderid}</td>
-                                <td className={"nameCell"}>{student.name}</td>
-                                <td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>
+                                <td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={id} style={{width: 40}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>
+                                {/*<td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>*/}
+                                <td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
-                                <td><img alt={"Presentation " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>
+                                {/*<td><img alt={"Presentation " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>*/}
                                 <td className={"urlCell"}><a href={student.url} target="_blank">{student.url}</a></td>
-                                <td className={"urlCell"}><a href={student.githubURL} target="_blank">{student.githubURL}</a></td>
+                                {/*<td className={"urlCell"}><a href={student.githubURL} target="_blank">{student.githubURL}</a></td>*/}
                                 <td>
                                     <button
                                         type="button"
