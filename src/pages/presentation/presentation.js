@@ -40,7 +40,7 @@ class PresentationPage extends React.Component {
         },
         {
             name: 'criteria_2',
-            title: 'Creativity',
+            title: 'Innovative',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
@@ -48,13 +48,6 @@ class PresentationPage extends React.Component {
         {
             name: 'criteria_3',
             title: 'Clarity',
-            values: [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-            ]
-        },
-        {
-            name: 'criteria_4',
-            title: 'Overall',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]

@@ -30,7 +30,7 @@ class ScoringPage extends React.Component {
         },
         {
             name: 'criteria_2',
-            title: '2. How do you rate the creativity of the work?',
+            title: '2. How innovative and transformative is the game idea?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
@@ -38,13 +38,6 @@ class ScoringPage extends React.Component {
         {
             name: 'criteria_3',
             title: '3. How do you rate the clarity of this presentation on the scale from 1 (not clear at all) to 10 (the presentation is clear)?',
-            values: [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-            ]
-        },
-        {
-            name: 'criteria_4',
-            title: '4. How do you rate the overall quality of this presentation on the scale from 1 (low) to 10 (excellent)?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
