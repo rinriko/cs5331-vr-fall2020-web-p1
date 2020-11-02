@@ -318,7 +318,7 @@ class PresentationPage extends React.Component {
                         {this.state.students.map(student => (
                             <tr key={student.id}>
                                 <td scope="row">{student.orderid}</td>
-                                <td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={id} style={{width: 40}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>
+                                <td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>
                                 {/*<td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>*/}
                                 <td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
@@ -376,7 +376,8 @@ class PresentationPage extends React.Component {
                                             <span style={{fontSize: "25px", padding: "0"}}>&times;</span></button>
                                         <h4>{this.state.student ? "Presentation #" + this.state.student.orderid + " " : ""}</h4>
                                         <h6>{this.state.student ? "" + this.state.student.name + " " : ""}</h6>
-                                        <div><img alt={this.state.student ?this.state.student.name:""} style={{height: 140}} src={this.state.student ?this.state.student.image:""}/></div>
+                                        {/*<div><img alt={this.state.student ?this.state.student.name:""} style={{height: 140}} src={this.state.student ?this.state.student.image:""}/></div>*/}
+                                        <div className={"avatarCell"}>{this.state.student ?(this.state.student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
                                         <div>{this.state.countdown > 0 ?
                                             <div><h4 className={"h4"}>{"Time left: \u00A0"}</h4>
                                                 <h1 className={"h1"}>{this.state.countdown}</h1>
@@ -436,7 +437,9 @@ class PresentationPage extends React.Component {
                                                     Next
                                                 </button></div>
                                                 <div><h6>{this.state.nextStudent.name}</h6>
-                                                    <img alt={this.state.nextStudent.name} style={{height: 140}} src={this.state.nextStudent.image}/></div>
+                                                    {/*<img alt={this.state.nextStudent.name} style={{height: 140}} src={this.state.nextStudent.image}/>*/}
+                                                    <div className={"avatarCell"}>{this.state.nextStudent ?(this.state.nextStudent.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
+                                                </div>
                                                 <div className={"pt-2"}>{"\n\n"}</div>
 
                                             </div> : "Last student ‾\\_(ツ)_/‾\n"}</div>

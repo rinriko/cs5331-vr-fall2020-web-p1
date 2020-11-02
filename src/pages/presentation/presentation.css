@@ -96,3 +96,14 @@
 .axisy text{
     font-weight: bold;
 }
+
+.avatarCell img{
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    left: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    border:1px solid #ddd
+}
