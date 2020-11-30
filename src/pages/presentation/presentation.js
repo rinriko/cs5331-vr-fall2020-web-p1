@@ -295,7 +295,7 @@ class PresentationPage extends React.Component {
                     <table className="table table-striped table-hover">
                         <thead className="thead-grey">
                         <tr>
-                            <th scope="col">ID</th>
+                            <th scope="col">Group</th>
                             <th scope="col">Name</th>
                             {/*<th scope="col">Image</th>*/}
                             <th scope="col">Abstract</th>
