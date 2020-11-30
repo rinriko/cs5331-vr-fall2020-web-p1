@@ -14,7 +14,8 @@ class ScoringPage extends React.Component {
             id: '',
             score: {},
             comment: '',
-            timeleft: null
+            timeleft: null,
+            isfirstSumit:true
         }
     }
 
@@ -76,7 +77,8 @@ class ScoringPage extends React.Component {
             }
             document.querySelectorAll('.form-check-input').forEach(el=>{
                 el.checked = false;
-            })
+            });
+            updatevalue.isfirstSumit = true;
             updatevalue.score = score;
         }
         await this.setState(updatevalue)
@@ -107,7 +109,8 @@ class ScoringPage extends React.Component {
                 ...this.state.score
             }
             // console.log(JSON.stringify(payload));
-            const res = await postScore(payload)
+            const res = await postScore(payload);
+            this.setState({isfirstSumit:false})
             alert('Submited score for group ' + this.state.presenting_student.id)
         }
     }
@@ -140,6 +143,7 @@ class ScoringPage extends React.Component {
                         {/*<div className={"block"}>{"\n"}</div>*/}
                     </div>
                     <div className={"row mt-2"}>
+                        {this.state.isfirstSumit ?
                         <div>
                             <div className="form-group row">
                                 {/*<h3 className={"block"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
@@ -184,16 +188,21 @@ class ScoringPage extends React.Component {
                                     />
                                 </div>
                             </div>
-                            <button className="btn btn-success" disabled={this.state.timeleft >= this.submitLimit?true:null} style={{marginBottom: "50px"}}
+                            <button className="btn btn-success"
+                                    disabled={this.state.timeleft >= this.submitLimit ? true : null}
+                                    style={{marginBottom: "50px"}}
                                     onClick={this.setUser}>Submit
                             </button>
                         </div>
+                        :
+                        <div>----Your submission is recorded----</div>}
                     </div>
                 </div>
+                {this.state.isfirstSumit?
                 <div style={{position:'fixed','bottom':'10px','right':'10px','pointerEvents':'none','backgroundColor':this.state.timeleft >= this.submitLimit?'#a1001e':'#009526',
                     'color':'white','borderRadius':'5px',padding:'10px'}}>
                     {this.state.timeleft >= this.submitLimit?`Submission open after ${this.state.timeleft-this.submitLimit} sec`:'You can submit now!'}
-                </div>
+                </div>:''}
             </div>:
             <div>
                 <p>No presentation.</p>

@@ -29,7 +29,8 @@ class PresentationPage extends React.Component {
 
 
     presentLength = 360;
-    presentWarning = 180;
+    presentOpensubmission = 180;
+    presentWarning = 60;
 
     criteria = [
         {
@@ -410,7 +411,7 @@ class PresentationPage extends React.Component {
                                                         </div>
                                                     </div>
                                                 </div>: <div>
-                                                    {this.state.countdown<=this.presentWarning?
+                                                    {this.state.countdown<=this.presentOpensubmission?
                                                         <p style={{color:'#146900'}}>Receiving Comments...</p>:
                                                     <p>No scores recorded</p>}
                                                 </div>
