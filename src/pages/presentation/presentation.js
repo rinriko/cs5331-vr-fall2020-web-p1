@@ -311,6 +311,7 @@ class PresentationPage extends React.Component {
                             {/*<th scope="col">Sketch</th>*/}
                             <th scope="col">Screenshot</th>
                             <th scope="col">Presentation</th>
+                            <th scope="col">Video</th>
                             <th scope="col">GitHub</th>
                             {/*<th scope="col">Score</th>*/}
                             <th scope="col"></th>
@@ -326,6 +327,7 @@ class PresentationPage extends React.Component {
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
                                 <td><img alt={"Group " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>
                                 <td className={"urlCell"}><a href={student.url} target="_blank">{student.url}</a></td>
+                                <td className={"urlCell"}><a href={student.Video} target="_blank">{student.Video}</a></td>
                                 <td className={"urlCell"}><a href={student.githubURL} target="_blank">{student.githubURL}</a></td>
                                 <td>
                                     <button
