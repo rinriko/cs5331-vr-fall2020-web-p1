@@ -310,12 +310,12 @@ class PresentationPage extends React.Component {
                         <tbody>
                         {this.state.students.map(student => (
                             <tr key={student.id}>
-                                <td scope="row">{student.orderid}</td>
+                                <td scope="row">{student.id}</td>
                                 <td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>
                                 {/*<td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>*/}
                                 <td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
-                                <td><img alt={"Presentation " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>
+                                <td><img alt={"Group " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>
                                 <td className={"urlCell"}><a href={student.url} target="_blank">{student.url}</a></td>
                                 <td className={"urlCell"}><a href={student.githubURL} target="_blank">{student.githubURL}</a></td>
                                 <td>
@@ -367,7 +367,7 @@ class PresentationPage extends React.Component {
                                             onClick={this.closeModal}
                                             className={'float-right btn btn-danger btn-circle'}>
                                             <span style={{fontSize: "25px", padding: "0"}}>&times;</span></button>
-                                        <h4>{this.state.student ? "Presentation #" + this.state.student.orderid + " " : ""}</h4>
+                                        <h4>{this.state.student ? "Group #" + this.state.student.id + " " : ""}</h4>
                                         <h6>{this.state.student ? "" + this.state.student.name + " " : ""}</h6>
                                         {/*<div><img alt={this.state.student ?this.state.student.name:""} style={{height: 140}} src={this.state.student ?this.state.student.image:""}/></div>*/}
                                         <div className={"avatarCell"}>{(this.state.student&&this.state.student.members) ?(this.state.student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
@@ -414,7 +414,7 @@ class PresentationPage extends React.Component {
                                         <div>{this.state.nextStudent ?
                                             <div>
                                                 <div className={"mb-1"} style={{height: "40px"}}>
-                                                    <h4 style={{float: "left"}}>{" Presentation #" + this.state.nextStudent.orderid + "  "}</h4>
+                                                    <h4 style={{float: "left"}}>{" Group #" + this.state.nextStudent.id + "  "}</h4>
                                                     <button
                                                     type="button"
                                                     className="btn btn-primary"
