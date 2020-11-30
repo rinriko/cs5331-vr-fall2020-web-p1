@@ -90,7 +90,7 @@ class ScoringPage extends React.Component {
         } else {
             if (this.state.timeleft >= this.submitLimit)
             {
-                alert('Only allow submission after 100sec!')
+                alert('Only allow submission after 180sec!')
                 return
             }
             for (let c of this.criteria) {
@@ -184,11 +184,15 @@ class ScoringPage extends React.Component {
                                     />
                                 </div>
                             </div>
-                            <button className="btn btn-success" style={{marginBottom: "50px"}}
+                            <button className="btn btn-success" disabled={this.state.timeleft >= this.submitLimit?true:null} style={{marginBottom: "50px"}}
                                     onClick={this.setUser}>Submit
                             </button>
                         </div>
                     </div>
+                </div>
+                <div style={{position:'fixed','bottom':'10px','right':'10px','pointerEvents':'none','backgroundColor':this.state.timeleft >= this.submitLimit?'#a1001e':'#009526',
+                    'color':'white','borderRadius':'5px',padding:'10px'}}>
+                    {this.state.timeleft >= this.submitLimit?`Submission open after ${this.state.timeleft-this.submitLimit} sec`:'You can submit now!'}
                 </div>
             </div>:
             <div>
