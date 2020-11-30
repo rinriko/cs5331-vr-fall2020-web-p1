@@ -410,7 +410,7 @@ class PresentationPage extends React.Component {
                                                         </div>
                                                     </div>
                                                 </div>: <div>
-                                                    <p>No scores recorded</p>
+                                                    <p style={{color:'#146900'}}>Receiving Comments</p>
                                                 </div>
                                         }
 
