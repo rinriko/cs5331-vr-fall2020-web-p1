@@ -29,7 +29,7 @@ class PresentationPage extends React.Component {
 
 
     presentLength = 360;
-    presentWarning = 60;
+    presentWarning = 180;
 
     criteria = [
         {
