@@ -23,7 +23,7 @@ class ScoringPage extends React.Component {
     criteria = [
         {
             name: 'criteria_1',
-            title: '1. How do you rate the effort of this work?',
+            title: '1. How do you rate the effort of this group?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
@@ -37,7 +37,14 @@ class ScoringPage extends React.Component {
         },
         {
             name: 'criteria_3',
-            title: '3. How do you rate the clarity of this presentation on the scale from 1 (not clear at all) to 10 (the presentation is clear)?',
+            title: '3. How do you rate the teamwork of this group?',
+            values: [
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            ]
+        },
+        {
+            name: 'criteria_4',
+            title: '4. How do you rate the overall quality of this game?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
@@ -166,7 +173,7 @@ class ScoringPage extends React.Component {
                                 </div>)}
                             </fieldset>
                             <div className="form-group row mt-2">
-                                <label htmlFor="colFormLabel" className="col-sm-10 col-form-label">Any comment/question</label>
+                                <label htmlFor="colFormLabel" className="col-sm-10 col-form-label">Comment/Question</label>
                                 <div className="col-sm-10">
                                     <textarea
                                         className="form-control"

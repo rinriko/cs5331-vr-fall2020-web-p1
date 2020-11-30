@@ -48,7 +48,14 @@ class PresentationPage extends React.Component {
         },
         {
             name: 'criteria_3',
-            title: 'Clarity',
+            title: 'Teamwork',
+            values: [
+                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            ]
+        },
+        {
+            name: 'criteria_4',
+            title: 'Quality',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
