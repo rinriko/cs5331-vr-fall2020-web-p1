@@ -29,6 +29,7 @@ class PresentationPage extends React.Component {
 
 
     presentLength = 360;
+    presentWarning = 60;
 
     criteria = [
         {
@@ -373,7 +374,7 @@ class PresentationPage extends React.Component {
                                         <div className={"avatarCell"}>{(this.state.student&&this.state.student.members) ?(this.state.student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
                                         <div>{this.state.countdown > 0 ?
                                             <div><h4 className={"h4"}>{"Time left: \u00A0"}</h4>
-                                                <h1 className={"h1"}>{this.state.countdown}</h1>
+                                                <h1 style={this.state.countdown<=this.presentWarning && (this.state.countdown%2)?{color:'red'}:{color:'unset'}} className={"h1"}>{this.state.countdown}</h1>
                                                 <h4 className={"h4"}>{"s"}</h4>
                                             </div> :
                                             <h1 className={"h1"}>{"EXPRIRED"}</h1>}
