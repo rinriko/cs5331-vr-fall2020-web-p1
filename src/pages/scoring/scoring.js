@@ -18,7 +18,7 @@ class ScoringPage extends React.Component {
         }
     }
 
-    submitLimit = 140;
+    submitLimit = 260;
 
     criteria = [
         {
