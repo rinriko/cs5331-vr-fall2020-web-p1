@@ -411,7 +411,7 @@ class PresentationPage extends React.Component {
                                                     </div>
                                                 </div>: <div>
 
-                                                    <p style={{color:'#146900'}}>{this.state.countdown<=this.presentWarning?'Receiving Comments'+'No scores recorded'}</p>
+                                                    <p style={{color:'#146900'}}>{this.state.countdown<=this.presentWarning?'Receiving Comments':'No scores recorded'}</p>
                                                 </div>
                                         }
 
