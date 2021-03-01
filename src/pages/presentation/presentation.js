@@ -307,7 +307,7 @@ class PresentationPage extends React.Component {
                             <th scope="col">Group</th>
                             <th scope="col">Name</th>
                             {/*<th scope="col">Image</th>*/}
-                            <th scope="col">Abstract</th>
+                            {/*<th scope="col">Abstract</th>*/}
                             {/*<th scope="col">Sketch</th>*/}
                             <th scope="col">Screenshot</th>
                             <th scope="col">Presentation</th>
