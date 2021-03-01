@@ -61,10 +61,21 @@ class PresentationPage extends React.Component {
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
         }
-    ]
+    ];
+
+    handleClose(ev) {
+        ev.preventDefault();
+        this.closeModal();
+        return ev.returnValue = 'Exit?';
+    }
+
+    componentDidMount() {
+        window.addEventListener("beforeunload", this.handleClose);
+    }
 
     componentWillUnmount() {
         // console.log("clearInterval at componentWillUnmount")
+        window.removeEventListener("beforeunload",this.handleClose);
         this.setState({modalOpen: false, student: null})
         clearInterval(this.timerID);
         clearInterval(this.interval);
