@@ -286,7 +286,7 @@ class PresentationPage extends React.Component {
             success={async (user) => {
                 this.setState({user})
                 const students = await getStudents(); // get from back end
-                students.forEach(function(s){s.members = s.members.split(',')})
+                // students.forEach(function(s){s.members = s.members.split(',')})
                 students.sort((a,b)=>a.orderid-b.orderid);
                 const studentList_arr = await d3.json("https://hci-spring2021-p1.herokuapp.com/students");
                 const studentList = {};
@@ -321,9 +321,9 @@ class PresentationPage extends React.Component {
                         {this.state.students.map(student => (
                             <tr key={student.id}>
                                 <td scope="row">{student.id}</td>
-                                <td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>
-                                {/*<td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>*/}
-                                <td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>
+                                {/*<td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>*/}
+                                <td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>
+                                {/*<td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>*/}
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
                                 <td><img alt={"Group " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>
                                 <td className={"urlCell"}><a href={student.url} target="_blank">{student.url}</a></td>
