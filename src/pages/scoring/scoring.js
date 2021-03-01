@@ -73,6 +73,8 @@ class ScoringPage extends React.Component {
         let count = this.state.count;
         if (startTime.startTime === this.state.timeleft){
             count++;
+        }else{
+            count=0;
         }
         if (this.state.count>3){
             if (this.state.presenting_student){
@@ -89,6 +91,7 @@ class ScoringPage extends React.Component {
                 });
                 updatevalue.isfirstSumit = true;
                 updatevalue.score = score;
+                updatevalue.count = count;
             }
             await this.setState(updatevalue)
             // console.log(this.state.timeleft);
