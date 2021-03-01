@@ -304,7 +304,7 @@ class PresentationPage extends React.Component {
                     <table className="table table-striped table-hover">
                         <thead className="thead-grey">
                         <tr>
-                            <th scope="col">Group</th>
+                            <th scope="col">Order</th>
                             <th scope="col">Name</th>
                             {/*<th scope="col">Image</th>*/}
                             {/*<th scope="col">Abstract</th>*/}
@@ -321,13 +321,14 @@ class PresentationPage extends React.Component {
                         {this.state.students.map(student => (
                             <tr key={student.id}>
                                 <td scope="row">{student.id}</td>
+                                <td scope="row">{student.name}</td>
                                 {/*<td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>*/}
                                 <td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>
                                 {/*<td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>*/}
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
-                                <td><img alt={"Group " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>
+                                {/*<td><img alt={"Group " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>*/}
                                 <td className={"urlCell"}><a href={student.url} target="_blank">{student.url}</a></td>
-                                <td className={"urlCell"}><a href={student.Video} target="_blank">{student.Video}</a></td>
+                                <td className={"urlCell"}><a href={student.demo} target="_blank">{student.demo}</a></td>
                                 <td className={"urlCell"}><a href={student.githubURL} target="_blank">{student.githubURL}</a></td>
                                 <td>
                                     <button
