@@ -24,28 +24,21 @@ class ScoringPage extends React.Component {
     criteria = [
         {
             name: 'criteria_1',
-            title: '1. How do you rate the effort of this group?',
+            title: '1. How do you rate the usability of this interface?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
         },
         {
             name: 'criteria_2',
-            title: '2. How innovative and transformative is the game idea?',
+            title: '2. Does this interface follow the golden rules and design princibles?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
         },
         {
             name: 'criteria_3',
-            title: '3. How do you rate the teamwork of this group?',
-            values: [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
-            ]
-        },
-        {
-            name: 'criteria_4',
-            title: '4. How do you rate the overall quality of this game?',
+            title: '3. How do you rate the overall quality and effort of this interface (10 is the best)?',
             values: [
                 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
             ]
