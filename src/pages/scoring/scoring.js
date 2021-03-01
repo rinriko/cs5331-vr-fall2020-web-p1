@@ -117,7 +117,7 @@ class ScoringPage extends React.Component {
             // console.log(JSON.stringify(payload));
             const res = await postScore(payload);
             this.setState({isfirstSumit:false})
-            alert('Submited score for group ' + this.state.presenting_student.id)
+            alert('Submited score for student ' + this.state.presenting_student.id)
         }
     }
 
@@ -126,7 +126,7 @@ class ScoringPage extends React.Component {
             <div style={{"backgroundColor": "#ddd"}}>
                 <div className={"container"}>
                     <div className={"row"} style={{"position": 'relative'}}>
-                        <h3>{"Current Group: #" + this.state.presenting_student.id}</h3>
+                        <h3>{"Current Student: #" + this.state.presenting_student.id}</h3>
                         <div style={{"position": 'absolute', "right": 0}}>
                             {(this.state.timeleft > 2)?
                                 <div>
@@ -154,7 +154,7 @@ class ScoringPage extends React.Component {
                             <div className="form-group row">
                                 {/*<h3 className={"block"}>{"Time left: " + (this.state.timeleft? (this.state.timeleft - 1) + "s\n" : "--\n")}</h3>*/}
                                 <div className={"block"}>{"\n"}</div>
-                                <label htmlFor="colFormLabel" className="col-form-label">Your class ID</label>
+                                <label htmlFor="colFormLabel" className="col-form-label">Your ID in the table</label>
                                 <div className="col-sm-8">
                                     <input type="number" className="form-control"
                                            value={this.state.id}
