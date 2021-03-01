@@ -1,4 +1,4 @@
 export default {
     // uri: 'http://localhost:3000',
-    uri: 'https://cs5331-vr-fall2020-p1.herokuapp.com',
+    uri: 'https://hci-spring2021-p1.herokuapp.com',
 }

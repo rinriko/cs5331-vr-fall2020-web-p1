@@ -288,7 +288,7 @@ class PresentationPage extends React.Component {
                 const students = await getStudents(); // get from back end
                 students.forEach(function(s){s.members = s.members.split(',')})
                 students.sort((a,b)=>a.orderid-b.orderid);
-                const studentList_arr = await d3.json("https://cs5331-vr-fall202.herokuapp.com/students");
+                const studentList_arr = await d3.json("https://hci-spring2021-p1.herokuapp.com/students");
                 const studentList = {};
                 studentList_arr.forEach(d=>{
                     studentList[d.id] = d;
@@ -321,7 +321,7 @@ class PresentationPage extends React.Component {
                         {this.state.students.map(student => (
                             <tr key={student.id}>
                                 <td scope="row">{student.id}</td>
-                                <td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>
+                                <td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>
                                 {/*<td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>*/}
                                 <td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
@@ -381,7 +381,7 @@ class PresentationPage extends React.Component {
                                         <h4>{this.state.student ? "Group #" + this.state.student.id + " " : ""}</h4>
                                         <h6>{this.state.student ? "" + this.state.student.name + " " : ""}</h6>
                                         {/*<div><img alt={this.state.student ?this.state.student.name:""} style={{height: 140}} src={this.state.student ?this.state.student.image:""}/></div>*/}
-                                        <div className={"avatarCell"}>{(this.state.student&&this.state.student.members) ?(this.state.student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
+                                        <div className={"avatarCell"}>{(this.state.student&&this.state.student.members) ?(this.state.student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
                                         <div>{this.state.countdown > 0 ?
                                             <div><h4 className={"h4"}>{"Time left: \u00A0"}</h4>
                                                 <h1 style={this.state.countdown<=this.presentWarning && (this.state.countdown%2)?{color:'red'}:{color:'unset'}} className={"h1"}>{this.state.countdown}</h1>
@@ -444,7 +444,7 @@ class PresentationPage extends React.Component {
                                                 </button></div>
                                                 <div><h6>{this.state.nextStudent.name}</h6>
                                                     {/*<img alt={this.state.nextStudent.name} style={{height: 140}} src={this.state.nextStudent.image}/>*/}
-                                                    <div className={"avatarCell"}>{this.state.nextStudent ?(this.state.nextStudent.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/CS5331-VirtualReality-Fall2020/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
+                                                    <div className={"avatarCell"}>{this.state.nextStudent ?(this.state.nextStudent.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
                                                 </div>
                                                 <div className={"pt-2"}>{"\n\n"}</div>
 
