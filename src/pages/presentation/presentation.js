@@ -454,7 +454,7 @@ class PresentationPage extends React.Component {
                                                     Next
                                                 </button></div>
                                                 <div><h6>{this.state.nextStudent.name}</h6>
-                                                    <img alt={this.state.nextStudent.name} style={{height: 140}} src={this.state.nextStudent.image}/>
+                                                    {/*<img alt={this.state.nextStudent.name} style={{height: 140}} src={this.state.nextStudent.image}/>*/}
                                                     {/*<div className={"avatarCell"}>{this.state.nextStudent ?(this.state.nextStudent.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>*/}
                                                 </div>
                                                 <div className={"pt-2"}>{"\n\n"}</div>
