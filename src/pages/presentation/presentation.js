@@ -64,7 +64,6 @@ class PresentationPage extends React.Component {
     ];
 
     handleClose(ev) {
-        ev.preventDefault();
         this.closeModal();
         return ev.returnValue = 'Exit?';
     }
