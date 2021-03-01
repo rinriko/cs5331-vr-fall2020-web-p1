@@ -263,7 +263,7 @@ class PresentationPage extends React.Component {
         this.setState({
             modalOpen: false,
             student: this.state.students[idx],
-            currentUrl: this.state.students[idx].url,
+            currentUrl: this.state.students[idx].demo,
             countdown: this.presentLength,
             nextStudent: this.state.students[idx + 1],
         })
