@@ -69,20 +69,30 @@ class ScoringPage extends React.Component {
         let updatevalue = {
             presenting_student: presenting_student,
             timeleft: startTime.startTime,
+        };
+        let count = this.state.count;
+        if (startTime.startTime === this.state.timeleft){
+            count++;
         }
-        if (this.state.presenting_student&&(this.state.presenting_student._id!==presenting_student._id)){
-            let score = this.state.score;
-            for (let c of this.criteria) {
-                score[c.name] = null;
+        if (this.state.count>3){
+            if (this.state.presenting_student){
+                await this.setState({count:4,presenting_student:undefined})
             }
-            document.querySelectorAll('.form-check-input').forEach(el=>{
-                el.checked = false;
-            });
-            updatevalue.isfirstSumit = true;
-            updatevalue.score = score;
+        }else {
+            if (this.state.presenting_student && (this.state.presenting_student._id !== presenting_student._id)) {
+                let score = this.state.score;
+                for (let c of this.criteria) {
+                    score[c.name] = null;
+                }
+                document.querySelectorAll('.form-check-input').forEach(el => {
+                    el.checked = false;
+                });
+                updatevalue.isfirstSumit = true;
+                updatevalue.score = score;
+            }
+            await this.setState(updatevalue)
+            // console.log(this.state.timeleft);
         }
-        await this.setState(updatevalue)
-        // console.log(this.state.timeleft);
     }
 
     setUser = async () => {
