@@ -389,7 +389,7 @@ class PresentationPage extends React.Component {
                                             onClick={this.closeModal}
                                             className={'float-right btn btn-danger btn-circle'}>
                                             <span style={{fontSize: "25px", padding: "0"}}>&times;</span></button>
-                                        <h4>{this.state.student ? "Group #" + this.state.student.id + " " : ""}</h4>
+                                        <h4>{this.state.student ? "Student #" + this.state.student.id + " " : ""}</h4>
                                         <h6>{this.state.student ? "" + this.state.student.name + " " : ""}</h6>
                                         {/*<div><img alt={this.state.student ?this.state.student.name:""} style={{height: 140}} src={this.state.student ?this.state.student.image:""}/></div>*/}
                                         <div className={"avatarCell"}>{(this.state.student&&this.state.student.members) ?(this.state.student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)):''}</div>
@@ -438,7 +438,7 @@ class PresentationPage extends React.Component {
                                         <div>{this.state.nextStudent ?
                                             <div>
                                                 <div className={"mb-1"} style={{height: "40px"}}>
-                                                    <h4 style={{float: "left"}}>{" Group #" + this.state.nextStudent.id + "  "}</h4>
+                                                    <h4 style={{float: "left"}}>{" Student #" + this.state.nextStudent.id + "  "}</h4>
                                                     <button
                                                     type="button"
                                                     className="btn btn-primary"
