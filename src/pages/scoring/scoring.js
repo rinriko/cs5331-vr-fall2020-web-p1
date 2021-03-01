@@ -19,7 +19,7 @@ class ScoringPage extends React.Component {
         }
     }
 
-    submitLimit = 180;
+    submitLimit = 140;
 
     criteria = [
         {
@@ -105,7 +105,7 @@ class ScoringPage extends React.Component {
         } else {
             if (this.state.timeleft >= this.submitLimit)
             {
-                alert('Only allow submission after 180sec!')
+                alert('Only allow submission after 60sec!')
                 return
             }
             for (let c of this.criteria) {
