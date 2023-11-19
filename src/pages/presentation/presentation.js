@@ -291,7 +291,8 @@ class PresentationPage extends React.Component {
                 const students = await getStudents(); // get from back end
                 // students.forEach(function(s){s.members = s.members.split(',')})
                 students.sort((a,b)=>a.orderid-b.orderid);
-                const studentList_arr = await d3.json("https://hci-spring2021-p1.herokuapp.com/students");
+                const studentList_arr = await d3.json("https://hci-spring2021-p1.azurewebsites.net/students");
+                // const studentList_arr = await d3.json("https://hci-spring2021-p1.herokuapp.com/students");
                 const studentList = {};
                 studentList_arr.forEach(d=>{
                     studentList[d.id] = d;
