@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/9cb60c0a-6567-4341-aa7e-ccbe4fb0ba9b/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/hci-spring2021-p1-frontend",
+    "appService.deploySubpath": "."
+}

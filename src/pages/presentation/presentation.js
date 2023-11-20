@@ -299,10 +299,9 @@ class PresentationPage extends React.Component {
                 })
                 await this.setState({studentList});
                 await this.setState({students});
+                console.log("D")
             }}
-        /> :
-        // return(
-            <div className={"contentOverflow"}>
+        /> : <div className={"contentOverflow"}>
                 <div className="header m-3">
                     <h2 className={"display-4 pb-3"}>Presentation list</h2>
                     <table className="table table-striped table-hover">
@@ -327,7 +326,7 @@ class PresentationPage extends React.Component {
                                 <td scope="row">{student.id}</td>
                                 <td scope="row">{student.name}</td>
                                 {/*<td className={"avatarCell"}>{student.name}<br></br>{student.members.map(id=><img alt={'#'+id} style={{width: 30}} src={'https://github.com/idatavisualizationlab/HCI-Spring2021/blob/master/photos/'+this.state.studentList[id]['Photoname']+'?raw=true'}/>)}</td>*/}
-                                <td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td>
+                                {/* <td><img alt={student.name} style={{width: 120}} src={student.image.replace('open?id','uc?export=view&id').replace('watch?','embed/')}/></td> */}
                                 {/*<td style={{'textAlign':'left'}}><h6>{student.title}</h6>{student.abstract}</td>*/}
                                 {/*<td><img alt={"group " + student.id} style={{height: 100}} src={student.sketch.replace('open?id','export=view?id')}/></td>*/}
                                 {/*<td><img alt={"Group " + student.id} style={{height: 100}} src={student.screenshot.replace('open?id','uc?export=view&id')}/></td>*/}
@@ -351,21 +350,21 @@ class PresentationPage extends React.Component {
                     </table>
                     <Modal
                         isOpen={this.state.modalOpen}
-                        ariaHideApp={false}
-                        style={{
-                            content: {
-                                padding: '10px',
-                                backgroundColor: '#e9e9e9',
-                                height: (window.innerHeight) + "px",
-                                borderStyle: 'solid',
-                                borderWidth: '3px',
-                                borderColor: '#4f4f4f',
-                                top: '0px',
-                                left: '0px',
-                                right: '0px',
-                                // marginBottom: '10px',
-                            }
-                        }}
+                        // ariaHideApp={false}
+                        // style={{
+                        //     content: {
+                        //         padding: '10px',
+                        //         backgroundColor: '#e9e9e9',
+                        //         height: (window.innerHeight) + "px",
+                        //         borderStyle: 'solid',
+                        //         borderWidth: '3px',
+                        //         borderColor: '#4f4f4f',
+                        //         top: '0px',
+                        //         left: '0px',
+                        //         right: '0px',
+                        //         // marginBottom: '10px',
+                        //     }
+                        // }}
                     >
                         <div>
                             <table className={"table table-custom"}>
